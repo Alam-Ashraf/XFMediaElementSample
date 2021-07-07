@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="XFVideoDemo.Views.CustomMediaElement"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    HeightRequest="200"
+    VerticalOptions="CenterAndExpand">
+
+    <ContentView.Content>
+
+        <xct:MediaElement
+            x:Name="mediaElement"
+            Aspect="AspectFit"
+            AutoPlay="True"
+            BackgroundColor="Black"
+            HeightRequest="200"
+            IsLooping="False"
+            KeepScreenOn="True"
+            ShowsPlaybackControls="True"
+            Source="{Binding VideoURL}"
+            VerticalOptions="CenterAndExpand" />
+
+    </ContentView.Content>
+
+</ContentView>

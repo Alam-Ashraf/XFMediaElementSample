@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XFVideoDemo.Views.ScreenShotsView"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+
+    <ContentPage.Content>
+
+        <StackLayout>
+
+             <Grid Padding="10"
+                  HeightRequest="60"
+                  BackgroundColor="#559173"
+                  ColumnDefinitions="*,*,*"
+                  HorizontalOptions="FillAndExpand"
+                  >
+
+                <Image Source="left_arrow.png"
+                       Grid.Column="0"
+                       HeightRequest="25"
+                       WidthRequest="25"
+                       HorizontalOptions="Start"
+                       >
+
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnBackCommand}"/>
+                    </Image.GestureRecognizers>
+
+                </Image>
+
+                <Label Text="Screenshot List"
+                       FontSize="Medium"
+                       TextColor="White"
+                       Grid.Column="1"
+                       HorizontalOptions="CenterAndExpand"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center"
+                       />
+
+               
+            </Grid>
+
+             <Grid RowDefinitions="*,Auto">
+
+                <!--Top Selected Video List-->
+                <CollectionView
+                    Grid.Row="0"
+                    ItemSizingStrategy="MeasureFirstItem"
+                    ItemsSource="{Binding ScreenShots}"
+                    SelectionMode="None"
+                    VerticalOptions="FillAndExpand">
+
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2" />
+                    </CollectionView.ItemsLayout>
+
+                    <!--  Empty View  -->
+                    <CollectionView.EmptyView>
+
+                        <StackLayout VerticalOptions="CenterAndExpand">
+
+                            <Label
+                                 VerticalOptions="CenterAndExpand"
+                                 HorizontalOptions="CenterAndExpand"
+                                 HorizontalTextAlignment="Center"
+                                 VerticalTextAlignment="Center"
+                                 Text="No Screenshot found"
+                                 TextColor="Black" />
+
+                        </StackLayout>
+
+                    </CollectionView.EmptyView>
+
+                    <!--  Item Template  -->
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <StackLayout>
+
+                                <Frame HeightRequest="230"
+                                       Margin="5"
+                                       Padding="2"
+                                       HasShadow="False"
+                                       CornerRadius="0"
+                                       BorderColor="Black"
+                                       VerticalOptions="Start">
+
+                                    <StackLayout>
+
+                                        <Label Text="{Binding Title}"
+                                               HorizontalTextAlignment="Center"
+                                               TextColor="Black"/>
+
+                                        <Image Source="{Binding Screenshots}"
+                                           HeightRequest="200"
+                                           BackgroundColor="Black"
+                                           Aspect="AspectFill"
+                                           VerticalOptions="FillAndExpand"
+                                           />
+
+                                    </StackLayout>
+                                    
+                            
+                                </Frame>
+
+                            </StackLayout>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+            
+              </Grid>
+
+        </StackLayout>
+
+        
+    </ContentPage.Content>
+</ContentPage>
